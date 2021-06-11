@@ -1,5 +1,6 @@
 package com.vdab.rdcar.controllers;
 import com.vdab.rdcar.domain.Employee;
+import com.vdab.rdcar.domain.FunctionLevels;
 import com.vdab.rdcar.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class EmployeeController {
+
+
+    List<String> functionLevels = new ArrayList<String>();
+
 
     @Autowired
     EmployeeService employeeService;
@@ -32,6 +40,7 @@ public class EmployeeController {
     @GetMapping(value = "/editEmployee/{id}")
     public String showEditPage(@PathVariable("id") Long id, Model model){
         model.addAttribute("editEmployee",employeeService.findById(id));
+        model.addAttribute("functionLevels", FunctionLevels.values());
         return "edit";
     }
 

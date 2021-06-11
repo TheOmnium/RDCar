@@ -14,14 +14,27 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 public class Car implements Serializable {
-
+    @Transient
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Transient
     private String category;
+    @Transient
+    private String brand;
+    @Transient
+    private String model;
+    @Transient
+    private String fuel;
+    @Transient
+    private Double listPrice;
+    @Transient
+    private Double upgradeAmount;
+    @Transient
+    private Double downgradeAmount;
 
-    private String currentCar;
+
 
 
 }
